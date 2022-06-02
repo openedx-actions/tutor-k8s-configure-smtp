@@ -1,0 +1,35 @@
+#------------------------------------------------------------------------------
+# usage: configure tutor SMTP email service
+#        for AWS SES (Simple Email Service)
+#------------------------------------------------------------------------------
+name: configure tutor SMTP email service
+description: Github Action to use Tutor to configure AWS SES for use with Open edX running on AWS EKS Kubernetes
+branding:
+  icon: 'cloud'
+  color: 'orange'
+inputs:
+  aws-ses-iam-key:
+    description: 'AWS IAM key for AWS SES email service'
+    required: true
+  aws-ses-iam-secret:
+    description: 'AWS IAM secret for AWS SES email service'
+    required: true
+  aws-region:
+    description: 'The AWS region in which AWS SES service is hosted. Example: us-east-2'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    # ---------------------------------------------------------------------------------
+    # Note: We're not managing AWS SES with Terraform simply because the service is fiddly
+    # and AWS is neurotic about any changes to the config.
+    # ---------------------------------------------------------------------------------
+    - name: Setup AWS SES over SMTP
+      run: |-
+        echo "TUTOR_RUN_SMTP=true" >> $GITHUB_ENV
+        tutor config save --set EMAIL_BACKEND="django.core.mail.backends.smtp.EmailBackend" \
+                          --set EMAIL_HOST="email-smtp.${{ inputs.aws-region }}.amazonaws.com" \
+                          --set EMAIL_HOST_PASSWORD=${{ inputs.aws-ses-iam-key }} \
+                          --set EMAIL_HOST_USER=${{ inputs.aws-ses-iam-secret }} \
+                          --set EMAIL_PORT=587 \
+                          --set EMAIL_USE_TLS=true
