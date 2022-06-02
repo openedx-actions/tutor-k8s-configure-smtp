@@ -50,7 +50,11 @@ jobs:
         pip install tutor
       shell: bash
 
-      # This action.
-      - name: Build the image and upload to AWS ECR
-        uses: openedx-actions/tutor-service-configure-redis
+    # This action.
+    - name: Configure SMTP
+      uses: openedx-actions/tutor-service-configure-smtp
+      with:
+        aws-ses-iam-key: ${{ secrets.aws-ses-iam-key }}
+        aws-ses-iam-secret: ${{ secrets.aws-ses-iam-secret }}
+        aws-region: us-east-2
 ```
