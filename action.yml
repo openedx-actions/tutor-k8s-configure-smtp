@@ -25,6 +25,7 @@ runs:
     # and AWS is neurotic about any changes to the config.
     # ---------------------------------------------------------------------------------
     - name: Setup AWS SES over SMTP
+      shell: bash
       run: |-
         echo "TUTOR_RUN_SMTP=true" >> $GITHUB_ENV
         tutor config save --set EMAIL_BACKEND="django.core.mail.backends.smtp.EmailBackend" \
