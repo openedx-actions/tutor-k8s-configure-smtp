@@ -2,7 +2,7 @@
 # usage: configure tutor SMTP email service
 #        for AWS SES (Simple Email Service)
 #------------------------------------------------------------------------------
-name: Tutor k8s configure SMTP email service
+name: Open edX Tutor k8s configure SMTP email service
 description: Github Action to use Tutor to configure AWS SES for use with Open edX running on AWS EKS Kubernetes
 branding:
   icon: 'cloud'
