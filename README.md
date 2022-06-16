@@ -49,7 +49,7 @@ jobs:
 
       # This action.
       - name: Configure remote SMTP service - AWS SES
-        uses: openedx-actions/tutor-service-configure-smtp@v0.0.1
+        uses: openedx-actions/tutor-service-configure-smtp@v1.0.0
         with:
           aws-ses-iam-key: ${{ secrets.aws-ses-iam-key }}
           aws-ses-iam-secret: ${{ secrets.aws-ses-iam-secret }}
