@@ -1,8 +1,9 @@
 <img src="https://avatars.githubusercontent.com/u/40179672" width="75">
 
-[![hack.d Lawrence McDaniel](https://img.shields.io/badge/hack.d-Lawrence%20McDaniel-orange.svg)](https://lawrencemcdaniel.com)
-[![discuss.overhang.io](https://img.shields.io/static/v1?logo=discourse&label=Forums&style=flat-square&color=ff0080&message=discuss.overhang.io)](https://discuss.overhang.io)
-[![docs.tutor.overhang.io](https://img.shields.io/static/v1?logo=readthedocs&label=Documentation&style=flat-square&color=blue&message=docs.tutor.overhang.io)](https://docs.tutor.overhang.io)<br/>
+[![Tests](https://github.com/openedx-actions/tutor-k8s-configure-smtp/actions/workflows/testRelease.yml/badge.svg)](https://github.com/openedx-actions/tutor-k8s-configure-smtp/actions)
+[![Open edX Discussion](https://img.shields.io/static/v1?logo=discourse&label=Forums&style=flat-square&color=000000&message=discuss.openedx.org)](https://discuss.openedx.org/)
+[![docs.tutor.overhang.io](https://img.shields.io/static/v1?logo=readthedocs&label=Documentation&style=flat-square&color=blue&message=docs.tutor.overhang.io)](https://docs.tutor.overhang.io)
+[![hack.d Lawrence McDaniel](https://img.shields.io/badge/hack.d-Lawrence%20McDaniel-orange.svg)](https://lawrencemcdaniel.com)<br/>
 [![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com/)
 [![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
 [![Kubernetes](https://img.shields.io/badge/kubernetes-%23326ce5.svg?style=for-the-badge&logo=kubernetes&logoColor=white)](https://kubernetes.io/)
@@ -15,8 +16,7 @@ This action is designed to work seamlessly with Kubernetes secrets created by th
 
 **IMPORTANT SECURITY DISCLAIMER**: Sensitive data contained in Kubernetes secrets is masked in Github Actions logs and console output provided that the secret was created with the Terraform scripts provided in the Cookiecutter. If you are working a Kubernetes secret created outside of the Cookiecutter then **be aware that you run a non-zero risk of your sensitive data becoming exposed inside the Github Actions log data and/or console output**.
 
-## Usage:
-
+## Usage
 
 ```yaml
 name: Example workflow
@@ -49,7 +49,7 @@ jobs:
 
       # This action.
       - name: Configure remote SMTP service - AWS SES
-        uses: openedx-actions/tutor-service-configure-smtp@v1.0.0
+        uses: openedx-actions/tutor-service-configure-smtp@v1.0.1
         with:
           aws-ses-iam-key: ${{ secrets.aws-ses-iam-key }}
           aws-ses-iam-secret: ${{ secrets.aws-ses-iam-secret }}
